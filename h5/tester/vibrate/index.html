@@ -23,10 +23,7 @@
     //单击事件
     function btn() {
         const error = document.getElementById('error');
-        navigator.vibrate = navigator.vibrate ||
-            navigator.webkitVibrate ||
-            navigator.mozVibrate ||
-            navigator.msVibrate;
+        navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;
         if (navigator.vibrate) {
             // 支持
             navigator.vibrate(2000);
