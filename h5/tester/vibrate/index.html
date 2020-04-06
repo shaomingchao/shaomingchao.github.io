@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Document</title>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+</head>
+<!--设置地图容器显示-->
+<style type="text/css">
+    #error {
+        color: red;
+        line-height: 25px;
+        font-size: 12px;
+        margin: 10px 20px;
+        border: solid 1px gray;
+        border-radius: 4px;
+        height: 100px;
+    }
+</style>
+<script>
+    //单击事件
+    function btn() {
+        navigator.vibrate = navigator.vibrate ||
+            navigator.webkitVibrate ||
+            navigator.mozVibrate ||
+            navigator.msVibrate;
+        if (navigator.vibrate) {
+            // 支持
+            console.log("支持设备震动！");
+        }
+        navigator.vibrate([500, 300, 400, 300]);
+    }
+</script>
+<body>
+<button onclick="btn()">震动</button>
+<div id="error"></div>
+</body>
+</html>
+
