@@ -22,13 +22,16 @@
 <script>
     //单击事件
     function btn() {
+        const error = document.getElementById('error');
         navigator.vibrate = navigator.vibrate ||
             navigator.webkitVibrate ||
             navigator.mozVibrate ||
             navigator.msVibrate;
         if (navigator.vibrate) {
             // 支持
-            console.log("支持设备震动！");
+            navigator.vibrate(2000);
+        } else {
+            error.innerHTML="您的设备不支持";
         }
         navigator.vibrate([500, 300, 400, 300]);
     }
