@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">-->
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="MobileOptimized" content="320"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>input视频测试</title>
+</head>
+<body>
+<!--拍照 <input id="myfile" type="file" name="file" accept="image#zs#" capture="camera">-->
+<!--拍视频-->
+<input type="file" name="video" id="video-input" accept="video#zs#" capture="user" onchange="videoChange()"/>
+<p style="font-size: 14px">附：
+    <br>只允许调起摄像头，不允许选择文件
+    <br>活体的视频大小不能超8Mb，时长不能超6秒
+    <br><span id='info'></span>
+</p>
+<video id="video" width='300' height="300" controls autoplay></video>
+<script type="text/javascript">
+    function videoChange() {
+        var file = document.getElementById('video-input').files[0];
+        var fileSize = (Math.round(file.size / 1024)).toFixed();
+        document.getElementById('info').innerHTML += "所录视频大小约为：" + (fileSize / 1024).toFixed(2) + "Mb";
+        var url = URL.createObjectURL(file);
+        console.log(url);
+        document.getElementById("video").src = url;
+    }
+</script>
+</body>
+</html>
