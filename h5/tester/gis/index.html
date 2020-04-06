@@ -15,14 +15,14 @@
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
             function (position) {
-                geo.innerHTML += "经度" + position.coords.longitude+'<br/>';
-                geo.innerHTML += "纬度" + position.coords.latitude+'<br/>'
-                geo.innerHTML += "准确度" + position.coords.accuracy+'<br/>'
-                geo.innerHTML += "海拔" + position.coords.altitude+'<br/>'
-                geo.innerHTML += "海拔准确度" + position.coords.altitudeAcuracy+'<br/>'
-                geo.innerHTML += "行进方向" + position.coords.heading+'<br/>'
-                geo.innerHTML += "地面速度" + position.coords.speed+'<br/>'
-                geo.innerHTML += "请求的时间" + new Date(position.timestamp)+'<br/>'
+                geo.innerHTML += "经度" + position.coords.longitude + '<br/>';
+                geo.innerHTML += "纬度" + position.coords.latitude + '<br/>';
+                geo.innerHTML += "准确度" + position.coords.accuracy + '<br/>';
+                geo.innerHTML += "海拔" + position.coords.altitude + '<br/>';
+                geo.innerHTML += "海拔准确度" + position.coords.altitudeAcuracy + '<br/>';
+                geo.innerHTML += "行进方向" + position.coords.heading + '<br/>';
+                geo.innerHTML += "地面速度" + position.coords.speed + '<br/>';
+                geo.innerHTML += "请求的时间" + new Date(position.timestamp) + '<br/>';
 
             },
             function (error) {
