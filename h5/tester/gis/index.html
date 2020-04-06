@@ -14,26 +14,36 @@
     var geo = document.getElementById('info');
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
-            function (ev) {
-                var latitude = ev.coords.latitude;
-                var longitude = ev.coords.longitude;
-                geo.innerHTML = '纬度：' + latitude + ' 经度：' + longitude;
+            function (position) {
+                geo.innerHTML += "经度" + position.coords.longitude+'<br/>';
+                geo.innerHTML += "纬度" + position.coords.latitude+'<br/>'
+                geo.innerHTML += "准确度" + position.coords.accuracy+'<br/>'
+                geo.innerHTML += "海拔" + position.coords.altitude+'<br/>'
+                geo.innerHTML += "海拔准确度" + position.coords.altitudeAcuracy+'<br/>'
+                geo.innerHTML += "行进方向" + position.coords.heading+'<br/>'
+                geo.innerHTML += "地面速度" + position.coords.speed+'<br/>'
+                geo.innerHTML += "请求的时间" + new Date(position.timestamp)+'<br/>'
+
             },
             function (error) {
                 switch (error.code) {
                     case error.PERMISSION_DENIED:
-                        geo.innerHTML = "用户拒绝共享地理位置信息"
+                        geo.innerHTML = "用户拒绝共享地理位置信息";
                         break;
                     case error.POSITION_UNAVAILABLE:
-                        geo.innerHTML = "无法获取当前位置"
+                        geo.innerHTML = "无法获取当前位置";
                         break;
                     case error.TIMEOUT:
-                        geo.innerHTML = "操作超时"
+                        geo.innerHTML = "操作超时";
                         break;
                     case error.UNKNOWN_ERROR:
-                        geo.innerHTML = "其他错误"
+                        geo.innerHTML = "其他错误";
                         break;
                 }
+            }, {
+                enableHighAcuracy: false, //位置是否精确获取
+                timeout: 5000,            //获取位置允许的最长时间
+                maximumAge: 1000          //多久更新获取一次位置
             })
     } else {
         alert('该浏览器不支持');
